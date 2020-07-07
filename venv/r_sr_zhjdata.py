@@ -179,7 +179,7 @@ class r_360_rs(object):
         is_pass = 1
 
         if "0" in output.values():
-            is_pass = 0
+            is_pass = 1
             result.setLong("score", 1000)
 
 
