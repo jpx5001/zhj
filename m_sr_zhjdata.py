@@ -63,7 +63,11 @@ def config_pull(context):
         non_whitelist_config_dict.update(jsonobj["non_whitelist_config_dict"])
     except:
         pass
-    config_data = {whitelist_config_dict.items() + non_whitelist_config_dict.items()}
+    config_data = {
+        "whitelist_config_dict" : json.dumps(whitelist_config_dict),
+        "non_whitelist_config_dict" : json.dumps(non_whitelist_config_dict)
+    }
+
     return config_data
 
 

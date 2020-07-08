@@ -89,14 +89,11 @@ class r_360_rs(object):
          }
         result = context.create()
         init_data = context.get()
-        #获取是否是白名单
-        hecate_sr_whitelist = init_data.getString("hecate_sr_whitelist")
+
         #获取白名单配置
         whitelist_config = init_data.getString["whitelist_config_dict"]
         whitelist_config_dict = json.loads(whitelist_config)
-        #获取非白名单配置
-        non_whitelist_config = init_data.getString["non_whitelist_config_dict"]
-        non_whitelist_config_dict = json.loads(non_whitelist_config)
+
 
         #获取直接得到的数据参数是10个，以下为10个可以直接得到的参数
         try:
