@@ -59,11 +59,13 @@ def config_pull(context):
 
     try:
         jsonobj = json.loads(config.getString("config_data"))
+
         whitelist_config_dict.update(jsonobj["whitelist_config_dict"])
         non_whitelist_config_dict.update(jsonobj["non_whitelist_config_dict"])
     except:
         pass
     config_data = {whitelist_config_dict.items() + non_whitelist_config_dict.items()}
+
     return config_data
 
 
@@ -88,7 +90,7 @@ class m_sr_zhjdata_white(object):
             "infoquerybean": "-999", #明细信息
             "loanorgcount": "-999" ,#机构数
 
-            #"hecate_sr_whitelist": "1",
+            "hecate_sr_whitelist": "1",
             #"whitelist_config_dict": json.dumps(whitelist_config_dict),
             #"non_whitelist_config_dict": json.dumps(non_whitelist_config_dict),
 
@@ -116,7 +118,7 @@ class m_sr_zhjdata_white(object):
             zhi_data_dict = json.loads(zhj_data_st)
             if zhj_data_st:
                for item in zhi_data_dict:
-                   if ( zhi_data_dict[item] is not None):
+                   if(zhi_data_dict[item] is not None):
                        output[item] = zhi_data_dict[item]
             else:
                 pass

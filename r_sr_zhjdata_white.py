@@ -54,22 +54,21 @@ class r_360_rs(object):
 
     def rule(self, context):
         output = {
-        "ZHJ001":"1",
-        "ZHJ002": "1",
-        "ZHJ003": "1",
-        "ZHJ004": "1",
-        "ZHJ005": "1",
-        "ZHJ006": "1",
-        "ZHJ007": "1",
-        "ZHJ008": "1",
-        "ZHJ009": "1",
-        "ZHJ010": "1",
-        "ZHJ011": "1",
-        "ZHJ012": "1",
-        "ZHJ013": "1",
-        "ZHJ014": "1",
-        "ZHJ015": "1"
-
+            "ZHJ001": "1",
+            "ZHJ002": "1",
+            "ZHJ003": "1",
+            "ZHJ004": "1",
+            "ZHJ005": "1",
+            "ZHJ006": "1",
+            "ZHJ007": "1",
+            "ZHJ008": "1",
+            "ZHJ009": "1",
+            "ZHJ010": "1",
+            "ZHJ011": "1",
+            "ZHJ012": "1",
+            "ZHJ013": "1",
+            "ZHJ014": "1",
+            "ZHJ015": "1"
         }
         data = {
             "overduemorecount": -999,
@@ -162,55 +161,55 @@ class r_360_rs(object):
 
         try:
             if data["overduemorecount"] != -999 and data["overduemorecount"] >= int(
-                    non_whitelist_config_dict["overduemorecount_limit"]):
+                    whitelist_config_dict["overduemorecount_limit"]):
                 output["ZHJ001"] = "0"
             if data["overduemoreamt"] != -999 and data["overduemoreamt"] > int(
-                    non_whitelist_config_dict["overduemoreamt_limit"]):
+                    whitelist_config_dict["overduemoreamt_limit"]):
                 output["ZHJ002"] = "0"
             if data["outstandcount"] != -999 and data["outstandcount"] >= int(
-                    non_whitelist_config_dict["outstandcount_limit"]):
+                    whitelist_config_dict["outstandcount_limit"]):
                 output["ZHJ003"] = "0"
             if data["loanbal"] != -999 and data["loanbal"] >= int(
-                    non_whitelist_config_dict["loanbal_limit"]):
+                    whitelist_config_dict["loanbal_limit"]):
                 output["ZHJ004"] = "0"
             if data["overduecount"] != -999 and data["overduecount"] >= int(
-                    non_whitelist_config_dict["overduecount_limit"]):
+                    whitelist_config_dict["overduecount_limit"]):
                 output["ZHJ005"] = "0"
             if data["overdueamt"] != -999 and data["overdueamt"] >= int(
-                    non_whitelist_config_dict["overdueamt_limit"]):
+                    whitelist_config_dict["overdueamt_limit"]):
                 output["ZHJ006"] = "0"
 
             if data["loanorgcount_queryatotalorg_365"] != -999 and data["loanorgcount_queryatotalorg_365"] <= float(
-                    non_whitelist_config_dict["loanorgcount_queryatotalorg_365_limit"]):
+                    whitelist_config_dict["loanorgcount_queryatotalorg_365_limit"]):
                 output["ZHJ007"] = "0"
 
             if data["queryatotalorg_30"] != -999 and data["queryatotalorg_30"] >= int(
-                    non_whitelist_config_dict["queryatotalorg_30_limit"]):
+                    whitelist_config_dict["queryatotalorg_30_limit"]):
                 output["ZHJ008"] = "0"
 
             if data["queryatotalorg_90"] != -999 and data["queryatotalorg_90"] >= int(
-                    non_whitelist_config_dict["queryatotalorg_90_limit"]):
+                    whitelist_config_dict["queryatotalorg_90_limit"]):
                 output["ZHJ009"] = "0"
             if data["queryatotalorg_180"] != -999 and data["queryatotalorg_180"] >= int(
-                    non_whitelist_config_dict["queryatotalorg_180_limit"]):
+                    whitelist_config_dict["queryatotalorg_180_limit"]):
                 output["ZHJ010"] = "0"
             if data["queryatotalorg_365"] != -999 and data["queryatotalorg_365"] >= float(
-                    non_whitelist_config_dict["queryatotalorg_365_limit"]):
+                    whitelist_config_dict["queryatotalorg_365_limit"]):
                 output["ZHJ011"] = "0"
 
             if data["insuranceamt"] != -999 and data["insuranceamt"] > int(
-                    non_whitelist_config_dict["insuranceamt_limit"]):
+                    whitelist_config_dict["insuranceamt_limit"]):
                 output["ZHJ0012"] = "0"
 
             if data["insurancecount"] != -999 and data["insurancecount"] > int(
-                    non_whitelist_config_dict["insurancecount_limit"]):
+                    whitelist_config_dict["insurancecount_limit"]):
                 output["ZHJ0013"] = "0"
 
             if data["insuranceorgcount"] != -999 and data["insuranceorgcount"] > int(
-                    non_whitelist_config_dict["insuranceorgcount_limit"]):
+                    whitelist_config_dict["insuranceorgcount_limit"]):
                 output["ZHJ0014"] = "0"
             if data["insurancebal"] != -999 and data["insurancebal"] > int(
-                    non_whitelist_config_dict["insurancebal_limit"]):
+                    whitelist_config_dict["insurancebal_limit"]):
                 output["ZHJ0015"] = "0"
         except:
             pass
@@ -224,6 +223,4 @@ class r_360_rs(object):
             result.setLong("score",score)
             for key, value in output.items():
                 result.setString(key, value)
-
-
 
