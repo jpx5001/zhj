@@ -86,14 +86,18 @@ class m_sr_zhjdata_white(object):
             "insuranceorgcount": "-999",
             "insurancebal": "-999",
             "infoquerybean": "-999", #明细信息
-            "loanorgcount": "-999"
+            "loanorgcount": "-999" ,#机构数
+            "hecate_sr_whitelist": "1",
+            #"whitelist_config_dict": json.dumps(whitelist_config_dict),
+            #"non_whitelist_config_dict": json.dumps(non_whitelist_config_dict),
+
 
         }
         config_data = config_pull(context)
         output["whitelist_config_dict"] = config_data["whitelist_config_dict"]
         output["non_whitelist_config_dict"] = config_data["non_whitelist_config_dict"]
 
-        output["hecate_sr_whitelist"] = 1;
+        output["hecate_sr_whitelist"] = 1
         try:
             hecate_white_list = context.getList("hecate_white_list")
 
@@ -103,7 +107,7 @@ class m_sr_zhjdata_white(object):
                output["hecate_sr_whitelist"] = 0
         except:
             log = context.getLog()
-            log.error("Error <m_sr_risklistwhite.py>获取外部风险名单失败 | %s" % (traceback.format_exc()))
+            log.error("Error <m_sr_zhjdata.py>获取白名单失败 | %s" % (traceback.format_exc()))
 
         try:
             zhj_data = context.get("中互金查询spout")
@@ -111,12 +115,13 @@ class m_sr_zhjdata_white(object):
             zhi_data_dict = json.loads(zhj_data_st)
             if zhj_data_st:
                for item in zhi_data_dict:
-                   if(zhi_data_dict["item"] is not None):
-                       output["item"] = zhi_data_dict["item"]
+                   if(zhi_data_dict[item] is not None):
+                       output[item] = zhi_data_dict[item]
             else:
                 pass
         except:
             pass
+
         finally:
             result = context.create()
             for key, value in output.items():
