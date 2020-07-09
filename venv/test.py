@@ -19,6 +19,95 @@ queryatotalorg_90 = 0
 queryatotalorg_180 = 0
 queryatotalorg_365 = 0
 
+config = "{\"whitelist_config_dict\":{\"overduemorecount_limit\":\"1\",\"overduemoreamt_limit\":\"0\",\"outstandcount_limit\":\"5\",\"loanbal_limit\":\"50000\",\"overduecount_limit\":\"3\",\"overdueamt_limit\":\"10000\",\"insuranceamt_limit\":\"0\",\"insurancecount_limit\":\"0\",\"insuranceorgcount_limit\":\"0\",\"insurancebal_limit\":\"0\",\"loanorgcount_queryatotalorg_365_limit\":\"0.1\",\"queryatotalorg_30_limit\":\"30\",\"queryatotalorg_60_limit\":\"50\",\"queryatotalorg_180_limit\":\"70\",\"queryatotalorg_365_limit\":\"100\"},\"non_whitelist_config_dict\":{\"overduemorecount_limit\":\"1\",\"overduemoreamt_limit\":\"0\",\"outstandcount_limit\":\"5\",\"loanbal_limit\":\"50000\",\"overduecount_limit\":\"3\",\"overdueamt_limit\":\"10000\",\"insuranceamt_limit\":\"0\",\"insurancecount_limit\":\"0\",\"insuranceorgcount_limit\":\"0\",\"insurancebal_limit\":\"0\",\"loanorgcount_queryatotalorg_365_limit\":\"0.1\",\"queryatotalorg_30_limit\":\"30\",\"queryatotalorg_60_limit\":\"50\",\"queryatotalorg_180_limit\":\"70\",\"queryatotalorg_365_limit\":\"100\"}}"
+
+config_dict=json.loads(config)
+
+
+whitelist_config_dict = {
+        "overduemorecount_limit": "1",
+        "overduemoreamt_limit": "0",
+        "outstandcount_limit": "5",
+        "loanbal_limit": "50000",
+        "overduecount_limit": "3",
+        "overdueamt_limit": "10000",
+        "insuranceamt_limit": "0",
+        "insurancecount_limit": "0",
+        "insuranceorgcount_limit": "0",
+        "insurancebal_limit": "0",
+        "loanorgcount_queryatotalorg_365_limit": "0.1",
+        "queryatotalorg_30_limit": "30",
+        "queryatotalorg_60_limit": "50",
+        "queryatotalorg_180_limit": "70",
+        "queryatotalorg_365_limit": "100"
+
+    }
+config_data = {}
+
+non_whitelist_config_dict = {
+    "overduemorecount_limit": "1",
+    "overduemoreamt_limit": "0",
+    "outstandcount_limit": "5",
+    "loanbal_limit": "50000",
+    "overduecount_limit": "3",
+    "overdueamt_limit": "10000",
+    "insuranceamt_limit": "0",
+    "insurancecount_limit": "0",
+    "insuranceorgcount_limit": "0",
+    "insurancebal_limit": "0",
+    "loanorgcount_queryatotalorg_365_limit": "0.1",
+    "queryatotalorg_30_limit": "30",
+    "queryatotalorg_60_limit": "50",
+    "queryatotalorg_180_limit": "70",
+    "queryatotalorg_365_limit": "100"
+}
+
+whitelist_config_dict.update(config_dict["whitelist_config_dict"])
+#dictMerge = dict(whitelist_config_dict.items()+non_whitelist_config_dict.items())
+
+#config_data = {whitelist_config_dict.items() + non_whitelist_config_dict.items()}
+
+str1 = json.dumps(whitelist_config_dict)
+str2 = json.dumps(non_whitelist_config_dict)
+config_data = {
+    "whitelist" : str1,
+    "non_whitelist" : str2
+
+}
+whitelist_confi = json.loads(config_data["whitelist"])
+print(config_data)
+# print(whitelist_confi)
+# print(config_data["whitelist"])
+# print(dict)
+# print(type(whitelist_config_dict))
+
+w=str(config_data["whitelist"])
+h=str(config_data["non_whitelist"])
+overduemorecount = int("2")
+
+w1=w
+w_dict=json.loads(w1)
+overduemorecount_limt=w_dict["overduemorecount_limit"]
+
+print(overduemorecount<=int(overduemorecount_limt))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 def days(nowdate, ddate):
     date1 = datetime.datetime.strptime(nowdate[0:10], "%Y-%m-%d")
 
